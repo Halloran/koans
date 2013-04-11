@@ -1,3 +1,6 @@
+class TriangleError < StandardError
+end
+
 # Triangle Project Code.
 
 # Triangle analyzes the lengths of the sides of a triangle
@@ -14,7 +17,24 @@
 #   about_triangle_project_2.rb
 #
 def triangle(a, b, c)
-  # WRITE THIS CODE
+  
+  	if ([a,b,c].min <= 0)
+  		raise TriangleError
+	end
+	temp = [a,b,c].sort
+	if temp[0] + temp[1] <= temp[2]
+		raise TriangleError
+	end
+
+  if (a == b) && (b == c)
+	return :equilateral
+  end 
+  if (a == b) || (b == c) || (a == c) || (b == c)
+	return :isosceles
+  else
+  	return :scalene	
+  end
+
 end
 
 # Error class used in part 2.  No need to change this code.
