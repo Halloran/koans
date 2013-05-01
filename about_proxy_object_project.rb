@@ -18,6 +18,14 @@ class Proxy
     # ADD MORE CODE HERE
   end
 
+  def method_missing(method_name, *args, &block)
+    if method_name.to_s == "channel"
+      10
+    else
+      super(method_name, *args, &block)
+    end
+  end
+
   # WRITE CODE HERE
 end
 
